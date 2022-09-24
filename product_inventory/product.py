@@ -7,43 +7,53 @@ class Product:
         self._product_id: int = product_id
         self._name: str = name
         self._price: float = price
-        self._quantity: quantity = quantity
+        self._quantity: int = quantity
 
-    def get_product_id(self) -> int:
+    @property
+    def product_id(self) -> int:
         return self._product_id
 
-    def set_product_id(self, new_id: int) -> None:
+    @product_id.setter
+    def product_id(self, new_id):
+        if type(new_id) != int:
+            raise ValueError("New product id must be an int")
+        if len(str(new_id)) > 4:
+            raise ValueError("Products can not have an ID longer than 4")
         self._product_id = new_id
-        return None
 
-    def get_name(self) -> str:
+    @property
+    def name(self) -> str:
         return self._name
 
-    def set_name(self, new_name: str) -> None:
+    @name.setter
+    def name(self, new_name):
+        if type(new_name) != str:
+            raise ValueError("New name must be a str")
+        if len(new_name) > 20:
+            raise ValueError("Products can not have a name larger than 20 characters")
         self._name = new_name
-        return None
 
-    def get_price(self) -> float:
+    @property
+    def price(self) -> float:
         return self._price
 
-    def set_price(self, new_price: float) -> None:
+    @price.setter
+    def price(self, new_price):
+        if type(new_price) != float:
+            raise ValueError("New price must be a float")
+        list_price = str(new_price).split('.')
+        if len(list_price[1]) > 2:
+            raise ValueError("Products must be in the correct currency format 00.00")
         self._price = new_price
-        return None
 
-    def get_quantity(self) -> int:
+    @property
+    def quantity(self) -> int:
         return self._quantity
 
-    def set_quantity(self, new_quantity: int) -> None:
+    @quantity.setter
+    def quantity(self, new_quantity: int):
+        if type(new_quantity) != int:
+            raise ValueError("New quantity must be an int")
+        if new_quantity > 1000:
+            raise ValueError("We can not store more that 1000 of each product")
         self._quantity = new_quantity
-
-    def increase_quantity(self, increase_value: int) -> None:
-        self._quantity += increase_value
-
-    def decrease_quantity(self, decrease_value: int) -> None:
-        self._quantity -= decrease_value
-
-    def increase_price(self, increase_value: int) -> None:
-        self._price += increase_value
-
-    def decrease_price(self, decrease_value: int) -> None:
-        self._price -= decrease_value
