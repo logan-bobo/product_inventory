@@ -15,6 +15,7 @@ class Product:
 
     @product_id.setter
     def product_id(self, new_id):
+        # TODO: Move all logic where type() != type -> isinstance()
         if type(new_id) != int:
             raise ValueError("New product id must be an int")
         if len(str(new_id)) > 4:
