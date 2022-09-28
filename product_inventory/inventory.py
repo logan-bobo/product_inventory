@@ -18,6 +18,8 @@ class Inventory:
 
     @name.setter
     def name(self, new_name: str):
+        if type(new_name) != str:
+            raise ValueError("New name must be a str")
         self._name = new_name
 
     @property

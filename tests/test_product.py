@@ -1,18 +1,7 @@
 import pytest
 
 from product_inventory.product import Product
-
-
-@pytest.fixture
-def product():
-    test_product = Product(
-        product_id=1,
-        name="test_product",
-        price=1.00,
-        quantity=100
-    )
-
-    return test_product
+from .fixtures import product
 
 
 class TestProductCreation:
