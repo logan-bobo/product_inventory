@@ -94,7 +94,7 @@ New inventory after multiple products have been been removed:
     # Add multiple products to our already instantiated inventory
     inventory_1.add_products([product_1, product_2, product_3])
     print(f"""
-    New inventory after multiple products have been been added:
+New inventory after multiple products have been been added:
 {[product.name for product in inventory_1.products]}
         """)
 
