@@ -33,23 +33,12 @@ class Inventory:
                 raise ValueError(f"{product} is not type Product in new products list.")
         self._products = new_products
 
-    def add_product(self, new_product: Product):
-        if not isinstance(new_product, Product):
-            raise ValueError(f"{new_product} is not type Product")
-        self._products.append(new_product)
-
     def add_products(self, new_products: list[Product]):
         for product in new_products:
             if not isinstance(product, Product):
                 raise ValueError(f"{product} is not type Product")
         for new_product in new_products:
             self._products.append(new_product)
-
-    def remove_product(self, product_to_remove: Product):
-        try:
-            self._products.remove(product_to_remove)
-        except ValueError as e:
-            raise ValueError(f"Product {product_to_remove} not in inventory. Error: {e}")
 
     def remove_products(self, products_to_remove: list[Product]):
         for product_to_remove in products_to_remove:
